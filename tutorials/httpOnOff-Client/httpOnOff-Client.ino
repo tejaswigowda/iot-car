@@ -9,7 +9,6 @@ char * HOSTNAME = "test";
 char * WifiPASS = "";
 
 #include <ESP8266WiFi.h>
-#include <WebSocketsServer.h>
 #include <ESP8266WebServer.h>
 #include <Hash.h>
 
