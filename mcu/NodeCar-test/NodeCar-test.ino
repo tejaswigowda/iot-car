@@ -7,7 +7,7 @@
 #include <ESP8266mDNS.h>
 #include <Hash.h>
 
-#define WifiSSID ""
+#define WifiSSID "test"
 #define WifiPASS ""
 
 #define LEFT_PWM  D1
@@ -73,6 +73,16 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
 }
 
 void setup() {
+
+      pinMode(LEFT_PWM, OUTPUT);
+    pinMode(LEFT_DIR, OUTPUT);
+    pinMode(RIGHT_PWM, OUTPUT);
+    pinMode(RIGHT_DIR, OUTPUT);
+
+    analogWrite(LEFT_PWM, 0);
+    analogWrite(RIGHT_PWM, 0);
+    digitalWrite(LEFT_DIR, 0);
+    digitalWrite(RIGHT_DIR, 0);
     //USE_SERIAL.begin(921600);
     USE_SERIAL.begin(115200);
 
@@ -88,15 +98,7 @@ void setup() {
         delay(1000);
     }
 
-    pinMode(LEFT_PWM, OUTPUT);
-    pinMode(LEFT_DIR, OUTPUT);
-    pinMode(RIGHT_PWM, OUTPUT);
-    pinMode(RIGHT_DIR, OUTPUT);
 
-    analogWrite(LEFT_PWM, 0);
-    analogWrite(RIGHT_PWM, 0);
-    digitalWrite(LEFT_DIR, 0);
-    digitalWrite(RIGHT_DIR, 0);
 
     WiFiMulti.addAP(WifiSSID, WifiPASS);
 
